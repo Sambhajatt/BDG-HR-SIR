@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BDG GAME | Official Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #0c0c0e;
+      --surface: #16161a;
+      --surface-2: #1e1e24;
+      --border: #2a2a32;
+      --text: #f0f0f2;
+      --text-muted: #a0a0ab;
+      --accent: #c9a227;
+      --accent-hover: #d4af37;
+      --success: #2d8a5e;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Header */
+    header {
+      padding: 28px 0;
+      border-bottom: 1px solid var(--border);
+      background: rgba(12, 12, 14, 0.95);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(12px);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.5px;
+    }
+
+    .logo span {
+      color: var(--accent);
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 24px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #0c0c0e;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-hover);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn-outline:hover {
+      background: var(--surface);
+      border-color: #3a3a45;
+    }
+
+    .btn-telegram {
+      background: #229ED9;
+      color: white;
+    }
+
+    .btn-telegram:hover {
+      background: #1c8bc0;
+    }
+
+    .btn-lg {
+      padding: 16px 32px;
+      font-size: 1.05rem;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 80px 0 70px;
+      text-align: center;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      padding: 6px 14px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 28px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 5vw, 3.6rem);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 20px;
+      letter-spacing: -1px;
+    }
+
+    .hero h1 span {
+      color: var(--accent);
+    }
+
+    .hero-desc {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 580px;
+      margin: 0 auto 40px;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* Features */
+    .section {
+      padding: 70px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .section-title h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      margin-bottom: 12px;
+    }
+
+    .section-title p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .feature-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px 24px;
+      transition: border-color 0.2s;
+    }
+
+    .feature-card:hover {
+      border-color: #3a3a45;
+    }
+
+    .feature-icon {
+      width: 42px;
+      height: 42px;
+      background: var(--surface-2);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      margin-bottom: 18px;
+    }
+
+    .feature-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .feature-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* Games */
+    .games-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+    }
+
+    .game-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 22px 18px;
+      text-align: center;
+    }
+
+    .game-item h4 {
+      font-size: 1rem;
+      margin-bottom: 6px;
+    }
+
+    .game-item p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* CTA Banner */
+    .cta-banner {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 48px 32px;
+      text-align: center;
+      margin: 20px 0 60px;
+    }
+
+    .cta-banner h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      margin-bottom: 12px;
+    }
+
+    .cta-banner p {
+      color: var(--text-muted);
+      margin-bottom: 28px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 36px 0;
+      text-align: center;
+    }
+
+    footer p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+      .hero {
+        padding: 56px 0 48px;
+      }
+
+      .header-actions .btn-outline {
+        display: none;
+      }
+
+      .cta-banner {
+        padding: 36px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container header-inner">
+      <div class="logo">BDG <span>GAME</span></div>
+      <div class="header-actions">
+        <a href="https://bdg1.cc//#/register?invitationCode=2361224341482" class="btn btn-outline" target="_blank" rel="noopener">Login</a>
+        <a href="https://bdg1.cc//#/register?invitationCode=2361224341482" class="btn btn-primary" target="_blank" rel="noopener">Register Now</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-badge">Trusted Gaming Platform</div>
+      <h1>Welcome to <span>BDG GAME</span></h1>
+      <p class="hero-desc">
+        India’s popular real-money gaming platform. Play colour prediction, lottery, slots, rummy, casino & sports — all in one place with fast UPI deposits & withdrawals.
+      </p>
+      <div class="hero-cta">
+        <a href="https://bdg1.cc//#/register?invitationCode=2361224341482" class="btn btn-primary btn-lg" target="_blank" rel="noopener">
+          Register / Login
+        </a>
+        <a href="https://t.me/trading8384" class="btn btn-telegram btn-lg" target="_blank" rel="noopener">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.64-.203-.658-.64.135-.954l11.566-4.458c.538-.196 1.006.128.832.941z"/></svg>
+          Telegram Support
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Why Choose BDG GAME</h2>
+        <p>Clean experience designed for Indian players</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🎯</div>
+          <h3>Colour Prediction</h3>
+          <p>Play WinGo – predict Red, Green or Violet in 30s to 5 min rounds and get quick results.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🎲</div>
+          <h3>Lottery Games</h3>
+          <p>Enjoy K3 dice lottery and 5D multi-digit games with multiple betting options.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <h3>Fast UPI Payments</h3>
+          <p>Instant deposits via UPI (PhonePe, GPay, Paytm) and quick withdrawals to your bank.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📱</div>
+          <h3>One Account</h3>
+          <p>Access colour prediction, slots, rummy, casino and sports from a single login.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Games -->
+  <section class="section" style="padding-top: 20px;">
+    <div class="container">
+      <div class="section-title">
+        <h2>Popular Games</h2>
+        <p>Multiple categories under one platform</p>
+      </div>
+      <div class="games-grid">
+        <div class="game-item">
+          <h4>WinGo</h4>
+          <p>Colour Prediction</p>
+        </div>
+        <div class="game-item">
+          <h4>K3 Lottery</h4>
+          <p>Dice Based</p>
+        </div>
+        <div class="game-item">
+          <h4>5D Lottery</h4>
+          <p>Number Prediction</p>
+        </div>
+        <div class="game-item">
+          <h4>Slots</h4>
+          <p>Digital Slots</p>
+        </div>
+        <div class="game-item">
+          <h4>Rummy</h4>
+          <p>Classic Card Game</p>
+        </div>
+        <div class="game-item">
+          <h4>Sports</h4>
+          <p>Live Betting</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section" style="padding-top: 40px;">
+    <div class="container">
+      <div class="cta-banner">
+        <h2>Ready to Start?</h2>
+        <p>Create your free account in under a minute and explore all games with one wallet.</p>
+        <div class="cta-buttons">
+          <a href="https://bdg1.cc//#/register?invitationCode=2361224341482" class="btn btn-primary btn-lg" target="_blank" rel="noopener">
+            Register / Login
+          </a>
+          <a href="https://t.me/trading8384" class="btn btn-telegram btn-lg" target="_blank" rel="noopener">
+            Customer Service (Telegram)
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>© 2026 BDG GAME. Play responsibly. 18+ only.</p>
+      <p style="margin-top: 8px;">
+        <a href="https://t.me/trading8384" target="_blank" rel="noopener">Telegram Channel</a>
+      </p>
+    </div>
+  </footer>
+
+</body>
+            </html>
